@@ -13,12 +13,12 @@ double notchSize(BuildContext context) {
 }
 
 Text getTextWithStyle(
-    {required String text,
+    {required BuildContext context,required String text,
       required double size,
       Color color = Colors.white}) =>
     Text(
       text,
-      style: GoogleFonts.andika(fontSize: getSize(size), color: color),
+      style: GoogleFonts.andika(fontSize: getSize(context,size), color: color),
     );
 
 Future? nextPage(context, Widget page) {

@@ -35,10 +35,10 @@ class _OrderConfirmPageState extends State<OrderConfirmPage> {
               0.9
             ])),
         padding: EdgeInsets.only(
-            left: getSize(20),
-            right: getSize(20),
+            left: getSize(context,20),
+            right: getSize(context,20),
             top: notchSize(context),
-            bottom: getSize(20)),
+            bottom: getSize(context,20)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,14 +51,14 @@ class _OrderConfirmPageState extends State<OrderConfirmPage> {
                 ),
               ),
               padding: EdgeInsets.symmetric(
-                  horizontal: getSize(20), vertical: getSize(10)),
+                  horizontal: getSize(context,20), vertical: getSize(context,10)),
               child: SvgPicture.asset('assets/svg/baseline_done_all.svg'),
             ),
             SizedBox(
-              height: getSize(20),
+              height: getSize(context,20),
             ),
-            getTextWithStyle(text: "Done!", size: 16),
-            getTextWithStyle(text: "Oder added to the cart", size: 16),
+            getTextWithStyle(context: context,text: "Done!", size: 16),
+            getTextWithStyle(context: context,text: "Oder added to the cart", size: 16),
           ],
         ),
       ),

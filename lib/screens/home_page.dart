@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_burger_joy/screens/burger_details_page.dart';
 import 'package:flutter_burger_joy/utils/colors.dart';
@@ -43,9 +41,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     },
   ];
 
-  // double _imageHeightAndWidth = 100;
-  // double _imageBgHeightAndWidth = 120;
-  // double  _finalAngleInRadians = 0;
 
   List<double> _imageHeightAndWidth = [];
   List<double> _imageBgHeightAndWidth = [];
@@ -84,29 +79,29 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               0.9
             ])),
         padding: EdgeInsets.only(
-            left: getSize(20),
-            right: getSize(20),
+            left: getSize(context,20),
+            right: getSize(context,20),
             top: notchSize(context),
-            bottom: getSize(20)),
+            bottom: getSize(context,20)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             headerWidget(),
             SizedBox(
-              height: getSize(20),
+              height: getSize(context,20),
             ),
-            getTextWithStyle(text: 'Good Bites', size: 40),
-            getTextWithStyle(text: 'delicious burgers!', size: 18),
+            getTextWithStyle(context: context,text: 'Good Bites', size: 40),
+            getTextWithStyle(context: context,text: 'delicious burgers!', size: 18),
             SizedBox(
-              height: getSize(40),
+              height: getSize(context,40),
             ),
             buildFoodCategoryTabBar(),
             Align(
               alignment: Alignment.center,
               child: Wrap(
-                runSpacing: getSize(20),
-                spacing: getSize(40),
+                runSpacing: getSize(context,20),
+                spacing: getSize(context,40),
                 children: List.generate(
                   foodCardsList.length,
                   (index) => GestureDetector(
@@ -132,7 +127,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
             ),
             SizedBox(
-              height: getSize(40),
+              height: getSize(context,40),
             ),
             const Spacer(),
             Container(
@@ -148,26 +143,26 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         color: Colors.black.withOpacity(0.4))
                   ]),
               padding: EdgeInsets.symmetric(
-                  horizontal: getSize(20), vertical: getSize(5)),
+                  horizontal: getSize(context,20), vertical: getSize(context,5)),
               child: Row(
                 children: [
                   SvgPicture.asset(
                     'assets/svg/location.svg',
-                    width: getSize(20),
+                    width: getSize(context,20),
                   ),
                   const Spacer(),
                   CircleAvatar(
-                    radius: getSize(20),
+                    radius: getSize(context,20),
                     backgroundColor: colorPrimary,
                     child: SvgPicture.asset(
                       'assets/svg/basket.svg',
-                      width: getSize(20),
+                      width: getSize(context,20),
                     ),
                   ),
                   const Spacer(),
                   Image.asset(
                     'assets/png/piggy_bank.png',
-                    width: getSize(20),
+                    width: getSize(context,20),
                   ),
                 ],
               ),
@@ -194,15 +189,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ],
       ),
       padding:
-          EdgeInsets.symmetric(horizontal: getSize(20), vertical: getSize(10)),
+          EdgeInsets.symmetric(horizontal: getSize(context,20), vertical: getSize(context,10)),
       child: Stack(
         alignment: Alignment.center,
         children: [
           Row(
             children: [
               SizedBox(
-                height: getSize(10),
-                width: getSize(10),
+                height: getSize(context,10),
+                width: getSize(context,10),
               ),
               Expanded(
                   child: InkWell(
@@ -211,13 +206,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           selectedFoodCategory = 0;
                         });
                       },
-                      child: getTextWithStyle(text: 'Burger', size: 14))),
+                      child: getTextWithStyle(context: context,text: 'Burger', size: 14))),
               SizedBox(
-                width: getSize(20),
+                width: getSize(context,20),
               ),
               SizedBox(
-                height: getSize(10),
-                width: getSize(10),
+                height: getSize(context,10),
+                width: getSize(context,10),
               ),
               Expanded(
                   child: InkWell(
@@ -226,13 +221,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           selectedFoodCategory = 1;
                         });
                       },
-                      child: getTextWithStyle(text: 'Pasta', size: 14))),
+                      child: getTextWithStyle(context: context,text: 'Pasta', size: 14))),
               SizedBox(
-                width: getSize(20),
+                width: getSize(context,20),
               ),
               SizedBox(
-                height: getSize(10),
-                width: getSize(10),
+                height: getSize(context,10),
+                width: getSize(context,10),
               ),
               Expanded(
                   child: InkWell(
@@ -241,14 +236,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           selectedFoodCategory = 2;
                         });
                       },
-                      child: getTextWithStyle(text: 'Salads', size: 14))),
+                      child: getTextWithStyle(context: context,text: 'Salads', size: 14))),
               Expanded(
                 flex: 2,
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: SvgPicture.asset(
                     'assets/svg/filter.svg',
-                    width: getSize(20),
+                    width: getSize(context,20),
                   ),
                 ),
               ),
@@ -259,28 +254,28 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               selectedFoodCategory == 0
                   ? selectedOptionIndicator()
                   : SizedBox(
-                      height: getSize(10),
-                      width: getSize(10),
+                      height: getSize(context,10),
+                      width: getSize(context,10),
                     ),
               const Expanded(child: SizedBox()),
               SizedBox(
-                width: getSize(20),
+                width: getSize(context,20),
               ),
               selectedFoodCategory == 1
                   ? selectedOptionIndicator()
                   : SizedBox(
-                      height: getSize(10),
-                      width: getSize(10),
+                      height: getSize(context,10),
+                      width: getSize(context,10),
                     ),
               const Expanded(child: SizedBox()),
               SizedBox(
-                width: getSize(20),
+                width: getSize(context,20),
               ),
               selectedFoodCategory == 2
                   ? selectedOptionIndicator()
                   : SizedBox(
-                      height: getSize(10),
-                      width: getSize(10),
+                      height: getSize(context,10),
+                      width: getSize(context,10),
                     ),
               const Expanded(child: SizedBox()),
               const Expanded(flex: 2, child: SizedBox()),
@@ -293,8 +288,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   SizedBox foodCards(int index) {
     return SizedBox(
-      width: getSize(130),
-      height: getSize(200),
+      width: getHorizontalSize(context,130),
+      height: getVerticalSize(context,210),
       child: Stack(
         // alignment: Alignment.,
         children: [
@@ -350,24 +345,24 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               SizedBox(
-                height: getSize(10),
+                height: getVerticalSize(context,10),
               ),
-              getTextWithStyle(text: foodCardsList[index]['title'], size: 16),
-              getTextWithStyle(
+              getTextWithStyle(context: context,text: foodCardsList[index]['title'], size: 16),
+              getTextWithStyle(context: context,
                   text: foodCardsList[index]['subTitle'], size: 14),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  getTextWithStyle(
+                  getTextWithStyle(context: context,
                       text: foodCardsList[index]['price'],
                       size: 14,
                       color: colorSecondary),
                   CircleAvatar(
-                    radius: getSize(13),
+                    radius: getHorizontalSize(context,13),
                     backgroundColor: Colors.black.withOpacity(0.3),
                     child: SvgPicture.asset(
                       'assets/svg/add.svg',
-                      // width: getSize(20),
+                      // width: getSize(context,20),
                     ),
                   ),
                 ],
@@ -385,8 +380,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       borderRadius: BorderRadius.circular(100),
       color: const Color(0xffE8AF3D),
     ),
-    height: getSize(10),
-    width: getSize(10),
+    height: getSize(context,10),
+    width: getSize(context,10),
   );
 
   Row headerWidget() {
@@ -395,11 +390,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       children: [
         SvgPicture.asset(
           'assets/svg/menu.svg',
-          width: getSize(20),
+          width: getSize(context,20),
         ),
         SvgPicture.asset(
           'assets/svg/notification.svg',
-          width: getSize(20),
+          width: getSize(context,20),
         ),
       ],
     );

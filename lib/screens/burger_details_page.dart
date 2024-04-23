@@ -4,7 +4,6 @@ import 'package:flutter_burger_joy/utils/colors.dart';
 import 'package:flutter_burger_joy/utils/constant.dart';
 import 'package:flutter_burger_joy/utils/size_utils.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:math' as math;
 
 class BurgerDetailsPage extends StatefulWidget {
   const BurgerDetailsPage({super.key});
@@ -18,8 +17,7 @@ class _BurgerDetailsPageState extends State<BurgerDetailsPage> with TickerProvid
   double pricePerUnit = 18.00;
   double totalPrice = 18.00;
   late AnimationController _animationController;
-  double _offsetX = 0.0; // Current horizontal offset of the image
-  double _offsetY = 0.0; // Current vertical offset of the image
+
 
   // Customize these values to adjust the animation:
   final double _maxOffsetX = 50.0; // Maximum horizontal offset
@@ -54,6 +52,7 @@ class _BurgerDetailsPageState extends State<BurgerDetailsPage> with TickerProvid
 
   }
 
+  @override
   void initState()  {
     super.initState();
 
@@ -83,19 +82,19 @@ class _BurgerDetailsPageState extends State<BurgerDetailsPage> with TickerProvid
               0.5
             ])),
         padding: EdgeInsets.only(
-            left: getSize(20),
-            right: getSize(20),
+            left: getSize(context,20),
+            right: getSize(context,20),
             top: notchSize(context),
-            bottom: getSize(20)),
+            bottom: getSize(context,20)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             headerWidget(),
             SizedBox(
-              height: getSize(20),
+              height: getSize(context,20),
             ),
         SizedBox(
-          height: getSize(400),
+          height: getSize(context,400),
           child: AnimatedBuilder(
             animation: _animationController,
             builder: (_, child) => Stack(
@@ -103,33 +102,23 @@ class _BurgerDetailsPageState extends State<BurgerDetailsPage> with TickerProvid
                 AnimatedPositioned(
                   right: _easeInSineAnimation.value * _maxOffsetX,
                   top: _easeInSineAnimation.value * _maxOffsetY, // Vertical offset
-                  duration: Duration(milliseconds: 1000),
+                  duration: const Duration(milliseconds: 1000),
                   child: Image.asset(
                     'assets/png/burger.png', // Replace with your image path
-                    width: getSize(300),
+                    width: getSize(context,300),
                   ),
                 ),
               ],
             ),
           ),
         ),
-            // AnimatedPositioned(
-            //   duration: const Duration(seconds: 1),
-            //   top: 0,
-            //   left: 0,
-            //
-            //   child: Image.asset(
-            //     'assets/png/burger.png',
-            //     width: getSize(300),
-            //   ),
-            // ),
-            getTextWithStyle(text: "Fresh Beef Burger with cheese", size: 24),
-            getTextWithStyle(
+            getTextWithStyle(context: context,text: "Fresh Beef Burger with cheese", size: 24),
+            getTextWithStyle(context: context,
                 text:
                     "Burger with a huge pork cutlet, pickled cucumbers, blue onions, grilled vegetables (green beans, bell peppers, carrots), oyster dressing, black cuttlefish ink bun.",
                 size: 14),
             SizedBox(
-              height: getSize(20),
+              height: getSize(context,20),
             ),
             Container(
               decoration: BoxDecoration(
@@ -139,7 +128,7 @@ class _BurgerDetailsPageState extends State<BurgerDetailsPage> with TickerProvid
                 ),
               ),
               padding: EdgeInsets.symmetric(
-                  horizontal: getSize(20), vertical: getSize(10)),
+                  horizontal: getSize(context,20), vertical: getSize(context,10)),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -155,12 +144,12 @@ class _BurgerDetailsPageState extends State<BurgerDetailsPage> with TickerProvid
                             backgroundColor: Colors.white,
                             child: SvgPicture.asset(
                               'assets/svg/add.svg',
-                              width: getSize(20),
+                              width: getSize(context,20),
                               color: Colors.black,
                             ),
                           ),
                         ),
-                        getTextWithStyle(text: currentQuantity.toString(), size: getSize(20)),
+                        getTextWithStyle(context: context,text: currentQuantity.toString(), size: getSize(context,20)),
                         GestureDetector(
                           onTap: (){
                             decrementQuantity();
@@ -169,7 +158,7 @@ class _BurgerDetailsPageState extends State<BurgerDetailsPage> with TickerProvid
                             backgroundColor: Colors.white,
                             child: SvgPicture.asset(
                               'assets/svg/dash.svg',
-                              width: getSize(20),
+                              width: getSize(context,20),
                             ),
                           ),
                         ),
@@ -183,9 +172,9 @@ class _BurgerDetailsPageState extends State<BurgerDetailsPage> with TickerProvid
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        getTextWithStyle(
-                            text: "Total price", size: getSize(12)),
-                        getTextWithStyle(text: "\$$totalPrice", size: getSize(24)),
+                        getTextWithStyle(context: context,
+                            text: "Total price", size: getSize(context,12)),
+                        getTextWithStyle(context: context,text: "\$$totalPrice", size: getSize(context,24)),
                       ],
                     ),
                   ),
@@ -193,7 +182,7 @@ class _BurgerDetailsPageState extends State<BurgerDetailsPage> with TickerProvid
               ),
             ),
             SizedBox(
-              height: getSize(20),
+              height: getSize(context,20),
             ),
             const Spacer(),
             addToCartButtonWidget(),
@@ -217,19 +206,19 @@ class _BurgerDetailsPageState extends State<BurgerDetailsPage> with TickerProvid
           ),
         ),
         padding: EdgeInsets.symmetric(
-            horizontal: getSize(20), vertical: getSize(10)),
+            horizontal: getSize(context,20), vertical: getSize(context,10)),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
               'assets/svg/basket.svg',
-              width: getSize(20),
+              width: getSize(context,20),
             ),
             SizedBox(
-              width: getSize(20),
+              width: getSize(context,20),
             ),
-            getTextWithStyle(text: "Add to cart", size: getSize(16)),
+            getTextWithStyle(context: context,text: "Add to cart", size: getSize(context,16)),
           ],
         ),
       ),
@@ -246,12 +235,12 @@ class _BurgerDetailsPageState extends State<BurgerDetailsPage> with TickerProvid
           },
           child: SvgPicture.asset(
             'assets/svg/back.svg',
-            width: getSize(20),
+            width: getSize(context,20),
           ),
         ),
         SvgPicture.asset(
           'assets/svg/more.svg',
-          width: getSize(20),
+          width: getSize(context,20),
         ),
       ],
     );
