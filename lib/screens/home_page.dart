@@ -289,7 +289,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   SizedBox foodCards(int index) {
     return SizedBox(
       width: getHorizontalSize(context,130),
-      height: getVerticalSize(context,210),
+      height: getVerticalSize(context,200),
       child: Stack(
         // alignment: Alignment.,
         children: [
